@@ -3,7 +3,6 @@ use reqwest::blocking::Client;
 use rust_xlsxwriter::{Workbook, XlsxError};
 use scraper::{Html, Selector};
 use std::error::Error;
-use urlencoding::encode;
 
 #[derive(Debug)]
 struct Article {
@@ -28,7 +27,7 @@ fn scrape(query: &str, num_pages: u32) -> Vec<Article> {
         let url = format!(
             "https://scholar.google.com/scholar?start={}&q={}&hl=en&as_sdt=0,5",
             page * 10,
-            encode(query)
+            urlencoding::encode(query)
         );
 
         if let Ok(response) = client.get(&url).send() {
