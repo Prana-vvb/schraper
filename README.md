@@ -1,5 +1,5 @@
 # Schraper
-A Google Scholar arcticle Scraper
+A Google Scholar article Scraper
 
 ## Usage
 ```

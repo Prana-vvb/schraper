@@ -93,7 +93,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     let res = command!()
         .author("Pranav V Bhat")
-        .about("CLI tool to scrape arcticles from Google Scholar")
+        .about("CLI tool to scrape articles from Google Scholar")
         .arg_required_else_help(true)
         .arg(
             Arg::new("query")
