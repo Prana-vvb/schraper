@@ -10,5 +10,4 @@ $ cd schraper && cargo build --release
 Run the binary in `target/release`
 
 ![Scraper Help](resources/shelp.png)
-
-![Scraper Run](resources/srun.png)
+![Scraper Run](resources/shrun.png)
