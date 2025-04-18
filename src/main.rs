@@ -2,7 +2,6 @@ use clap::{Arg, command};
 use reqwest::blocking::Client;
 use rust_xlsxwriter::{Workbook, XlsxError};
 use scraper::{Html, Selector};
-use std::error::Error;
 
 #[derive(Debug)]
 struct Article {
@@ -17,7 +16,7 @@ fn scrape(query: &str, num_pages: u32) -> Vec<Article> {
         .build()
         .unwrap();
 
-    let mut articles = Vec::new();
+    let mut articles = Vec::with_capacity((num_pages * 10) as usize);
     let result_selector = Selector::parse("div.gs_ri").unwrap();
     let title_selector = Selector::parse("h3.gs_rt").unwrap();
     let authors_selector = Selector::parse("div.gs_a").unwrap();
@@ -85,7 +84,7 @@ fn save(articles: &[Article], filename: &str) -> Result<(), XlsxError> {
     workbook.save(filename)
 }
 
-fn main() -> Result<(), Box<dyn Error>> {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut query = "";
     let mut pages = 1;
     let filename;
